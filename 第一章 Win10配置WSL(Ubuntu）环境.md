@@ -17,7 +17,7 @@
 - 后面的‘ / ’表示层级关系
 - /usr/bin/test.txt
 
-![image-20240417191102326](C:\Users\zhiyao\AppData\Roaming\Typora\typora-user-images\image-20240417191102326.png)
+![image-20240417191102326](D:\Learn files\C++ files\Github Repository\Linux-files\images\image-20240417191102326.png)
 
 ### 2. Windows路径的描述方式
 
@@ -29,7 +29,7 @@
 
 - D:\software\vscode\test.txt
 
-  ![image-20240417191035497](C:\Users\zhiyao\AppData\Roaming\Typora\typora-user-images\image-20240417191035497.png)
+  ![image-20240417191035497](D:\Learn files\C++ files\Github Repository\Linux-files\image-20240417191035497.png)
 
 ## 三、Linux命令入门
 
@@ -41,7 +41,7 @@
 
 - 命令：即Linux程序，一个命令就是一个Linux的程序。命令没有图形化页面，可以在命令行提供字符化的反馈。
 
-  ![image-20240417192320415](C:\Users\zhiyao\AppData\Roaming\Typora\typora-user-images\image-20240417192320415.png)
+  ![image-20240417192320415](D:\Learn files\C++ files\Github Repository\Linux-files\image-20240417192320415.png)
 
 ### 2.2 ls命令入门
 
