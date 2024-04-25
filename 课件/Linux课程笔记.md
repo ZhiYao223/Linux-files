@@ -989,7 +989,17 @@ itheima ALL=(ALL)       NOPASSWD: ALL
 
 语法：`env`
 
+# Linux常用快捷键
 
+1. ctrl+c	  强制停止
+2. ctrl+d      推出登录
+3. history    查看历史命令
+4. ！命令前缀，自动匹配上一个命令
+5. ctrl+r      搜索历史命令
+6. ctrl+a    光标移动到命令开始
+7. ctrl+e    光标移动到名利结束
+8. ctrl+左键/右键   光标左/右跳单词
+9. ctrl+l 或clear    清屏   
 
 
 
