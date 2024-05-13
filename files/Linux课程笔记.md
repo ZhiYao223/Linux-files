@@ -549,7 +549,11 @@ rm命令支持通配符，用来做模糊匹配
 
 ## systemctl
 
-功能：控制系统服务的启动关闭等
+功能：控制系统服务的启动关闭等，控制软件的启动、关闭、开机自启动
+
+- 系统内置服务均可被systemctl控制
+- 第三方软件，如果自动注册了可以被systemctl控制
+- 第三方软件，如果没有自动注册，可以手动注册
 
 语法：`systemctl start | stop | restart | disable | enable | status 服务名`
 
@@ -564,14 +568,12 @@ rm命令支持通配符，用来做模糊匹配
 
 ## 软链接
 
-功能：创建文件、文件夹软链接（快捷方式）
+功能：创建文件、文件夹软链接（快捷方式），类似Windows中的快捷方式
 
 语法：`ln -s 参数1 参数2`
 
-- 参数1：被链接的
+- 参数1：被链接的文件或文件夹
 - 参数2：要链接去的地方（快捷方式的名称和存放位置）
-
-
 
 ## 日期
 
@@ -588,7 +590,7 @@ rm命令支持通配符，用来做模糊匹配
   - %S   秒 (00..60)
   - %s   自 1970-01-01 00:00:00 UTC 到现在的秒数
 
-
+![image-20240426060446934](/home/zhiyao/.config/Typora/typora-user-images/image-20240426060446934.png)
 
 示例：
 
@@ -610,15 +612,19 @@ rm命令支持通配符，用来做模糊匹配
 
 
 
-
-
 ## 时区
 
 修改时区为中国时区
 
 ![image-20221027220554654](https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027220554.png)
 
+> `timedatectl list-timezones`
 
+> `sudo timedatectl set-timezone Asia/Shanghai`
+
+![image-20240426212628312](/home/zhiyao/.config/Typora/typora-user-images/image-20240426212628312.png)
+
+修改成功
 
 ## ntp
 
@@ -636,22 +642,22 @@ rm命令支持通配符，用来做模糊匹配
 
 ## ip地址
 
+ip地址是联网计算机的网络地址，用于在网路中进行定位
+
 格式：a.b.c.d
 
 - abcd为0~255的数字
 
+查看ip地址：
 
+- `ifconfig`     或者  ip a
 
 特殊IP：
 
-- 127.0.0.1，表示本机
+- 127.0.0.1，回环IP， 表示本机
 - 0.0.0.0
   - 可以表示本机
   - 也可以表示任意IP（看使用场景）
-
-
-
-查看ip：`ifconfig`
 
 
 
@@ -661,7 +667,7 @@ rm命令支持通配符，用来做模糊匹配
 
 查看：`hostname`
 
-设置：`hostnamectl set-hostname 主机名`
+修改主机名设置：`hostnamectl set-hostname 主机名`
 
 
 
@@ -725,13 +731,13 @@ rm命令支持通配符，用来做模糊匹配
 
 用法：`netstat -anp | grep xxx`
 
-
-
 ## ping命令
 
 测试网络是否联通
 
-语法：`ping [-c num] 参数`
+- `ping  [-c num]   ip或主机名`
+- -c: 检查的次数，不使用-c选项，将无限次数持续检查
+- 参数：ip或主机名，被检查的服务器的ip地址或主机名地址
 
 ![image-20221027221129782](https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221129.png)
 
@@ -741,13 +747,20 @@ rm命令支持通配符，用来做模糊匹配
 
 ![image-20221027221148964](https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221149.png)
 
+掌握使用wget命令下载文件
+
+- 语法：`wget [-b] url`
+- 选项：-b ，可选，后台下载
+- 参数：url ，下载链接
+- `tail -f wget-log` 持续跟踪下载情况
+
 ## curl命令
 
 ![image-20221027221201079](https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221201.png)
 
 ![image-20221027221210518](https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221210.png)
 
-
+![image-20240426220905541](/home/zhiyao/.config/Typora/typora-user-images/image-20240426220905541.png)
 
 ## top命令
 
@@ -755,13 +768,9 @@ rm命令支持通配符，用来做模糊匹配
 
 语法：`top`，查看基础信息
 
-
-
 可用选项：
 
 ![image-20221027221340729](https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221340.png)
-
-
 
 交互式模式中，可用快捷键：
 
@@ -794,6 +803,25 @@ rm命令支持通配符，用来做模糊匹配
 ![image-20221027221545822](https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221545.png)
 
 
+
+## 端口
+
+端口是设备与外界通讯交流的出入口，可以分为：物理端口和虚拟端口两类
+
+- 物理端口：又名接口，是可见端口，如USB接口、HDMI接口
+- 虚拟端口，计算机内部端口，不可见。用来操作系统和外部进行交互使用
+- 要实现电脑1微信传输信息到电脑2,首先通过ip找到电脑2,然后通过端口号找到其中的微信程序。
+
+Linux系统是一个超大号的小区，可以支持65535个端口，分为3类进行使用
+
+- 公认端口：1～1023，用于一些系统内置或知名程序的预留使用，如SSH服务的22端口，HTTPS服务的443端口，非特殊需求不占用这个范围的端口
+- 注册端口：1024～49151,通常可随意使用，用户自定义
+- 动态端口：49152～6553，通常不会固定绑定程序，而是当程序对外进行网络链接时，用于临时使用
+
+查看端口占用：
+
+- nmap ip地址，查看指定IP的对外暴露端口
+- netstat -anp|grep 端口号，查看本机指定端口号的占用情况。
 
 ## 环境变量
 
@@ -832,13 +860,40 @@ rm命令支持通配符，用来做模糊匹配
 
 ## 压缩解压
 
-### 压缩
+### tar压缩
 
 `tar -zcvf 压缩包 被压缩1...被压缩2...被压缩N`
 
-- -z表示使用gzip，可以不写
+- -z表示使用gzip，可以不写即默认打包模式，不压缩
 
+tar 的常用组合：
 
+- `tar -cvf test.tar 1.txt 2.txt 3.txt` 将1.txt 2.txt 3.txt压缩到test.tar文件内
+- `tar -zcvf test.tar.gz 1.txt 2.txt 3.txt`将1.txt 2.txt 3.txt压缩到`test.tar.gz`文件内是，使用gzip模式
+- ==注意==：
+  - `-z`选项如果使用的话，一般处于选项位第一个
+  - `-f`选项，**==必须==**在选项位最后一个
+- -c   创建压缩文件夹，用于压缩模式
+- -v   显示压缩、解压过程、用于查看进度
+- -x   解压模式
+- -f    要创建或解压的文件，-f选项必须在所有选项中处于最后一个
+- -z   gzip模式，不使用-z 就是普通的tarball打包格式，不会压缩体积
+- -C  选择解压的目的地，用于解压模式，单独使用，与其他参数分开
+
+### tar解压
+
+`tar -zxvf 被解压的文件 -C 要解压去的地方`
+
+- -z表示使用gzip，可以省略
+- -C，可以省略，指定要解压去的地方，不写解压到当前目录
+
+常用的tar解压组合
+
+- `tar -xvf test.tar` 解压test.tar，将文件解压至当前目录
+- `tar -xvf test.tar -C /home/zhiyao/桌面`，解压test.tar 至桌面
+- `tar -zxvf test.tar.gz -C /home/zhiyao/桌面`，将文件解压至桌面
+
+### zip命令压缩  
 
 `zip [-r] 参数1 参数2 参数N`
 
@@ -846,18 +901,7 @@ rm命令支持通配符，用来做模糊匹配
 
 
 
-### 解压
-
-`tar -zxvf 被解压的文件 -C 要解压去的地方`
-
-- -z表示使用gzip，可以省略
-- -C，可以省略，指定要解压去的地方，不写解压到当前目录
-
-
-
-
-
-
+### unzip命令解压
 
 `unzip [-d] 参数`
 
@@ -988,6 +1032,8 @@ itheima ALL=(ALL)       NOPASSWD: ALL
 查看系统全部的环境变量
 
 语法：`env`
+
+
 
 # Linux常用快捷键
 
