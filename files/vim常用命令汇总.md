@@ -223,3 +223,18 @@
 > - `<C-w>+` (或 `<C-w>-`) : 增加尺寸
 
 ![Split](http://yannesposito.com/Scratch/img/blog/Learn-Vim-Progressively/split.gif)
+
+## 查看进程
+
+`ps -ef`查看进程信息
+
+`ps -ef | grep <keyword> ` 过滤指定关键字进程信息
+
+`kill [-9] 进程号PID` 关闭指定进程号的进程
+
+
+
+
+
+
+
