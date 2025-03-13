@@ -181,7 +181,7 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 语法：`cat 参数`
 
 - 参数：被查看的文件路径
-- 使用mkdir创建test.txt后，往里面写入“Hello，world！”再通过`cat`命令读取文件内容。
+- 使用touch创建test.txt后，往里面写入“Hello，world！”再通过`cat`命令读取文件内容。
 
 ![image-20240418150351493](assets/image-20240418150351493.png)
 
